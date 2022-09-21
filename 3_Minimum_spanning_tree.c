@@ -1,3 +1,7 @@
+/* 3.Given a Graph, find a minimum spanning tree that takes a graph as input and finds the subset of the
+edges of that graph which form a tree that includes every vertex has the minimum sum of weights among
+all the trees. (Krushkals) */
+
 #include<stdio.h>
 struct edge{
     int u,v,cost;
