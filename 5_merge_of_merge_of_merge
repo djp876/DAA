@@ -1,0 +1,59 @@
+/* 5. Given a schedule containing arrival and departure time of trains in a station, find minimum number
+
+of platforms needed in the station so to avoid any delay in arrival of any train. (Similar to merge of merge sort)*/
+
+#include <stdio.h>
+
+int main()
+
+{
+
+    int a[10],d[10],i,n,mp,np,j;
+
+    printf("enter arrival times of train");
+
+    for(i=1;i<=6;i++)
+
+    scanf("%d",&a[i]);
+
+    for(i=1;i<=6;i++)
+
+    scanf("%d",&d[i]);
+
+    mp=1;
+
+    np=1;
+
+for(j=1,i=j+1;i<=6&&j<=6;)
+
+if(a[i]<d[j])
+
+{
+
+    mp++;
+
+    if(np<mp)
+
+    np=mp;
+
+    i++;
+
+}
+
+else
+
+{
+
+mp--;
+
+    j++;
+
+}
+
+printf("no. of platforms required %d",np);
+
+    return 0;
+
+}
+
+
