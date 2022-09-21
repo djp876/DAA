@@ -1,3 +1,5 @@
+/* 7.	For a weighted directed Graph, find shortest distances between every pair of vertices. (Floyds) */
+
 #include<stdio.h>
 int min(int a,int b){
 return (a<b) ? a : b;
