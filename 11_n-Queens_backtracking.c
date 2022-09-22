@@ -1,62 +1,88 @@
 /* 11.The N-Queen’s puzzle is the problem of placing N chess queens on an N×N chessboard so that no
 two queens threaten each other. Thus, a solution requires that no two queens share the same row, column,
 or diagonal. Provide a solution by using Backtracking*/
+NQueens
+
 #include<stdio.h>
+
+#include<stdlib.h>
+
 #include<math.h>
-int board[20],count;
+
+int place(int,int,int);
+
+int x[10];
+
+int nqueens(int k,int n)
+
+{
+
+int i;
+
+for(i=1;i<=n;i++)
+
+{
+
+if(place(k,i,n))
+
+{
+
+x[k]=i;
+
+if(k==n){
+
+for(i=1;i<=n;i++)
+
+printf("%d\t",x[i]);
+
+printf("\n");
+
+}
+
+else
+
+nqueens(k+1,n);
+
+}
+
+}
+
+}
+
+int place(int k,int i,int n)
+
+{
+
+int j;
+
+for(j=1;j<=k-1;j++){
+
+if((x[j]==i)|| (abs(x[j]-i)==abs(j-k)))
+
+return 0;
+
+}
+
+return 1;
+
+}
+
 int main()
+
 {
- int n,i,j;
- void queen(int row,int n);
- printf(" - N Queens Problem Using Backtracking -");
- printf("\n\nEnter number of Queens:");
- scanf("%d",&n);
- queen(1,n);
- return 0;
-}
-void print(int n)
-{
- int i,j;
- printf("\n\nSolution %d:\n\n",++count);
- for(i=1;i<=n;++i)
-  printf("\t%d",i);
- for(i=1;i<=n;++i)
- {
-  printf("\n\n%d",i);
-  for(j=1;j<=n;++j) 
-  {
-   if(board[i]==j)
-    printf("\t1"); 
-   else
-    printf("\t-"); 
-  }
- }
-}
-int place(int row,int column)
-{
- int i;
- for(i=1;i<=row-1;++i)
- {
-  if(board[i]==column)
-   return 0;
-  else
-   if(abs(board[i]-column)==abs(i-row))
-    return 0;
- }
- return 1;
-}
-void queen(int row,int n)
-{
- int column;
- for(column=1;column<=n;++column)
- {
-  if(place(row,column))
-  {
-   board[row]=column;
-   if(row==n)
-    print(n); 
-   else 
-    queen(row+1,n);
-  }
- }
+
+int n,count=0,i;
+
+printf("Enter no.of queens:");
+
+scanf("%d",&n);
+
+for(i=1;i<=n;i++)
+
+x[i]=0;
+
+nqueens(1,n);
+
+return 0;
+
 }
